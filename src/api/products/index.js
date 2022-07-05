@@ -1,10 +1,10 @@
-import express from "express"
-import createError from "http-errors"
-import ProductsModel from "./model.js"
+import express from 'express'
+import createError from 'http-errors'
+import ProductsModel from './model.js'
 
 const productsRouter = express.Router()
 
-productsRouter.post("/", async (req, res, next) => {
+productsRouter.post('/', async (req, res, next) => {
   try {
     const newUser = new ProductsModel(req.body)
     const { _id } = await newUser.save()
@@ -14,7 +14,7 @@ productsRouter.post("/", async (req, res, next) => {
   }
 })
 
-productsRouter.get("/", async (req, res, next) => {
+productsRouter.get('/', async (req, res, next) => {
   try {
     const users = await ProductsModel.find()
     res.send(users)
@@ -23,7 +23,7 @@ productsRouter.get("/", async (req, res, next) => {
   }
 })
 
-productsRouter.get("/:productId", async (req, res, next) => {
+productsRouter.get('/:productId', async (req, res, next) => {
   try {
     const user = await ProductsModel.findById(req.params.productId)
     if (user) {
@@ -36,9 +36,13 @@ productsRouter.get("/:productId", async (req, res, next) => {
   }
 })
 
-productsRouter.put("/:productId", async (req, res, next) => {
+productsRouter.put('/:productId', async (req, res, next) => {
   try {
-    const updatedUser = await ProductsModel.findByIdAndUpdate(req.params.productId, req.body, { new: true, runValidators: true })
+    const updatedUser = await ProductsModel.findByIdAndUpdate(
+      req.params.productId,
+      req.body,
+      { new: true, runValidators: true }
+    )
     if (updatedUser) {
       res.send(updatedUser)
     } else {
@@ -49,7 +53,7 @@ productsRouter.put("/:productId", async (req, res, next) => {
   }
 })
 
-productsRouter.delete("/:productId", async (req, res, next) => {
+productsRouter.delete('/:productId', async (req, res, next) => {
   try {
     const deletedUser = await ProductsModel.findByIdAndUpdate(req.params.productId)
     if (deletedUser) {
