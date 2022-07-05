@@ -38,12 +38,12 @@ describe('Testing the server', () => {
     // expect(response.body)
   })
 
-  // test("Should test that POST /products returns a valid _id and 201", async () => {
-  //   const response = await client.post("/products").send(validProduct).expect(201)
-  //   expect(response.body._id).toBeDefined()
-  // })
+  test('Should test that POST /products returns a valid _id and 201', async () => {
+    const response = await client.post('/products').send(validProduct).expect(201)
+    expect(response.body._id).toBeDefined()
+  })
 
-  // test("Should test that POST /products returns a valid 400 in case of not valid product", async () => {
-  //   const response = await client.post("/products").send(invalidProduct).expect(400)
-  // })
+  test('Should test that POST /products returns a valid 400 in case of not valid product', async () => {
+    const response = await client.post('/products').send(invalidProduct).expect(400)
+  })
 })

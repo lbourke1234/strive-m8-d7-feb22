@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose from 'mongoose'
 
 export const badRequestHandler = (err, req, res, next) => {
   console.log(err instanceof mongoose.Error.ValidationError)
@@ -25,7 +25,17 @@ export const forbiddenHandler = (err, req, res, next) => {
   }
 }
 
+export const notFoundHandler = (err, req, res, next) => {
+  if (err.status === 404) {
+    res.status(404).send({ message: err.message })
+  } else {
+    next(err)
+  }
+}
+
 export const catchAllHandler = (err, req, res, next) => {
   console.log(err)
-  res.status(500).send({ message: "An error occurred on our side! We gonna fix that ASAP!" })
+  res
+    .status(500)
+    .send({ message: 'An error occurred on our side! We gonna fix that ASAP!' })
 }

@@ -13,7 +13,7 @@ beforeAll(async () => {
   const newProduct = new ProductsModel({
     name: 'Leon',
     description: 'nothing here',
-    age: 28
+    price: 28
   })
   await newProduct.save()
 })
@@ -22,6 +22,9 @@ afterAll(async () => {
   await mongoose.connection.close()
 })
 
-test("Non existant ID's from /products/:id should give a 404", async () => {
-  const response = await client.get('/products/123456123456123456123456').expect(404)
+describe('apiProducts test', () => {
+  test("Non existant ID's from /products/:id should give a 404", async () => {
+    const response = await client.get('/products/123456123456123456123456').expect(404)
+    console.log(response.body)
+  })
 })
