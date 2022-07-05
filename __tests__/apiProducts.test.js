@@ -6,6 +6,9 @@ import ProductsModel from '../src/api/products/model.js'
 
 dotenv.config()
 
+console.log('mongo test url: ', process.env.MONGO_TEST_URL)
+console.log('mongo url: ', process.env.MONGO_URL)
+
 const client = supertest(server)
 
 beforeAll(async () => {

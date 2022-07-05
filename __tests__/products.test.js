@@ -10,7 +10,7 @@ const client = supertest(server) // Supertest is capable of running server.liste
 
 beforeAll(async () => {
   // Before all hook could be used to connect to mongo and also do some initial setup (like inserting some mock data)
-  await mongoose.connect(process.env.MONGO_TESTDB_URL) // DO NOT FORGET TO CONNECT TO MONGO! OTHERWISE YOU GONNA GET SOME TIMEOUT ERRORS
+  await mongoose.connect(process.env.MONGO_TEST_URL) // DO NOT FORGET TO CONNECT TO MONGO! OTHERWISE YOU GONNA GET SOME TIMEOUT ERRORS
   const newProduct = new ProductsModel(validProduct)
   await newProduct.save()
 })
