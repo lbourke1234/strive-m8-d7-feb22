@@ -30,4 +30,8 @@ describe('apiProducts test', () => {
     const response = await client.get('/products/123456123456123456123456').expect(404)
     console.log(response.body)
   })
+  test('Delete product should give 204 and 404 with wrong Id', async () => {
+    const response = await client.get('/products/123456123456123456123456').expect(404)
+    console.log(response.body)
+  })
 })
